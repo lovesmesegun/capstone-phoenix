@@ -5,8 +5,6 @@ metadata:
   namespace: taskapp
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: traefik
   tls:
@@ -21,14 +19,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: frontend-service
+                name: taskapp-frontend # Verified matching frontend service handle
                 port:
                   number: 80
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: backend
+                name: taskapp-backend # FIXED: Aligned perfectly with your active running backend service
                 port:
                   number: 5000
 
