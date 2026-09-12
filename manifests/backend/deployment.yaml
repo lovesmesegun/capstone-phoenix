@@ -19,6 +19,19 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
+          # INJECT THESE PROBE DEFINITIONS TO TRIGGER A 200 HEALTH HANDSHAKE
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 5
           env:
             - name: POSTGRES_DB
               value: "taskapp"
