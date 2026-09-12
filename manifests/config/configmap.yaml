@@ -9,4 +9,6 @@ data:
   DB_HOST: "postgres"
   DATABASE_HOST: "postgres"
   POSTGRES_HOST: "postgres"
+  # CORE FIX: Explicitly tells Alembic how to route across the internal cluster network to the DB
   DATABASE_URL: "postgresql://taskapp:taskapp123@postgres.taskapp.svc.cluster.local:5432/taskapp"
+
