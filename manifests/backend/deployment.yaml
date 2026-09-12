@@ -26,7 +26,6 @@ spec:
               value: "taskapp"
             - name: POSTGRES_PASSWORD
               value: "taskapp123"
-            # Core K8s domain service router rule (Bypasses hardcoded cluster IPs completely)
             - name: DATABASE_URL
               value: "postgresql://taskapp:taskapp123@postgres.taskapp.svc.cluster.local:5432/taskapp"
             - name: SECRET_KEY
