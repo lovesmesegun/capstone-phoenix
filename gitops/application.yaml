@@ -6,15 +6,22 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/lovesmesegun/capstone-phoenix.git
+    repoURL: https://github.comhttps/lovesmesegun/capstone-phoenix.git
     targetRevision: main
     path: manifests
   destination:
-    server: https://kubernetes.default.svc
+    server: https://default.svc
     namespace: taskapp
+  # PERMANENT VISUAL FIX: Tells the engine to ignore bare-metal networking state variations
+  ignoreDifferences:
+  - group: networking.k8s.io
+    kind: Ingress
+    jsonPointers:
+    - /status
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+
