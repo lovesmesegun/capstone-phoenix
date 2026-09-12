@@ -13,9 +13,8 @@ spec:
       labels:
         app: backend
     spec:
-      # PERMANENT FIX: Forces internal database connections to route directly to your active postgres service IP
       hostAliases:
-        - ip: "10.43.0.10" # Core K3s cluster service routing IP
+        - ip: "10.43.0.10"
           hostnames:
             - "postgres"
       containers:
@@ -31,8 +30,8 @@ spec:
               value: "taskapp"
             - name: POSTGRES_PASSWORD
               value: "taskapp123"
-            # PERMANENT FIX: Force connection URL directly through the secure service alias name
             - name: DATABASE_URL
               value: "postgresql://taskapp:taskapp123@postgres:5432/taskapp"
             - name: SECRET_KEY
               value: "mKLw5s+/RDrjskLP3Jp3Y2Hrz47n8tYMnt6FvfIoM7I="
+
