@@ -9,3 +9,6 @@ data:
   DB_HOST: "postgres"
   DATABASE_HOST: "postgres"
   POSTGRES_HOST: "postgres"
+  # CORE FIX: Explicitly forces Alembic migrations to route across the cluster network
+  DATABASE_URL: "postgresql://taskapp:taskapp123@postgres.taskapp.svc.cluster.local:5432/taskapp"
+
