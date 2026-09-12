@@ -19,7 +19,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
-          # INJECT THESE PROBE DEFINITIONS TO TRIGGER A 200 HEALTH HANDSHAKE
           livenessProbe:
             httpGet:
               path: /api/health
@@ -39,6 +38,13 @@ spec:
               value: "taskapp"
             - name: POSTGRES_PASSWORD
               value: "taskapp123"
+            # THE ABSOLUTE CURE: Forces the image entrypoint to drop localhost and use the true service name
+            - name: DB_HOST
+              value: "postgres.taskapp.svc.cluster.local"
+            - name: DATABASE_HOST
+              value: "postgres.taskapp.svc.cluster.local"
+            - name: POSTGRES_HOST
+              value: "postgres.taskapp.svc.cluster.local"
             - name: DATABASE_URL
               value: "postgresql://taskapp:taskapp123@postgres.taskapp.svc.cluster.local:5432/taskapp"
             - name: SECRET_KEY
