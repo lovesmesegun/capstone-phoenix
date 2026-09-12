@@ -34,4 +34,3 @@ spec:
               value: "postgresql://taskapp:taskapp123@postgres:5432/taskapp"
             - name: SECRET_KEY
               value: "mKLw5s+/RDrjskLP3Jp3Y2Hrz47n8tYMnt6FvfIoM7I="
-
