@@ -1,0 +1,25 @@
+---
+- name: Apply base hardening to all nodes
+  hosts: k3s_cluster
+  become: true
+  roles:
+    - security
+
+- name: Configure K3s Master Server
+  hosts: k3s_server
+  become: true
+  roles:
+    - k3s_server
+
+- name: Configure K3s Agent Workers
+  hosts: k3s_workers
+  become: true
+  roles:
+    - k3s_worker
+
+
+
+
+
+
+

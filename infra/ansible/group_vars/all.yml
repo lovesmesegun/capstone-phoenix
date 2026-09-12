@@ -1,0 +1,14 @@
+ansible_user: ubuntu
+
+ansible_ssh_private_key_file: ~/.ssh/phoenix-k3s-key.pem
+
+k3s_version: v1.36.2+k3s1
+
+timezone: UTC
+
+k3s_install_url: https://get.k3s.io
+
+k3s_server_args:
+  - "--write-kubeconfig-mode=644"
+  - "--tls-san=3.237.103.110"
+  - "--disable=traefik"

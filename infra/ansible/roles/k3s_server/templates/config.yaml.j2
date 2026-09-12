@@ -1,0 +1,5 @@
+write-kubeconfig-mode: "0644"
+tls-san:
+  - "{{ hostvars[groups['k3s_server'][0]].ansible_host }}"
+disable:
+  - traefik
