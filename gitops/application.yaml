@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.comhttps/lovesmesegun/capstone-phoenix.git
+    repoURL: https://github.com/lovesmesegun/capstone-phoenix.git # FIXED: Added correct slash separations
     targetRevision: main
     path: manifests
   destination:
-    server: https://default.svc
+    server: https://kubernetes.default.svc # FIXED: Set true standard internal API server endpoint
     namespace: taskapp
   # PERMANENT VISUAL FIX: Tells the engine to ignore bare-metal networking state variations
   ignoreDifferences:
@@ -24,4 +24,3 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-
