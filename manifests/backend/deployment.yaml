@@ -14,12 +14,11 @@ spec:
         app: backend
     spec:
       containers:
-        - name: taskapp-backend
+        - name: backend
           image: ghcr.io/ts-a-devops/taskapp-backend@sha256:7ebe1b93baef2c95098d6ce253879b4067ffbe39645a9c4fa5513aff202e4a70
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
-              name: http
           livenessProbe:
             httpGet:
               path: /api/health
@@ -49,5 +48,6 @@ spec:
               value: "postgresql://taskapp:taskapp123@postgres.taskapp.svc.cluster.local:5432/taskapp"
             - name: SECRET_KEY
               value: "mKLw5s+/RDrjskLP3Jp3Y2Hrz47n8tYMnt6FvfIoM7I="
+
 
 
