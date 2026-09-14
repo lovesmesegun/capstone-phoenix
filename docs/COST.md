@@ -1,25 +1,18 @@
-# Cost (fill this in)
+The Cost Analysis Used
+This deployment made use of K3s on AWS EC2 with Argo CD, PostgreSQL, and nip.io for DNS.
 
-This echoes the Docker lesson's "why one server" thread — except now the answer to "is the
-extra cost worth it?" is yours to argue.
+Monthly Itemized Cost
+Item Spec Qty $/mo
 
-## Monthly itemized cost
-| Item | Spec | Qty | $/mo |
-|---|---|---:|---:|
-| control-plane VM | … | 1 | … |
-| worker VMs | … | 2+ | … |
-| load balancer / elastic IP | … | … | … |
-| block storage (PVC) | … | … | … |
-| object storage (state, backups) | … | … | … |
-| DNS / domain | … | … | … |
-| **Total** | | | **$…** |
+No cost spent building this capstone-phoenix project. Still on free aws tier.
 
-## Compared to the single-server Compose+Portainer deploy
-- That stack cost roughly: $…
-- This cluster costs: $…
-- **What the extra spend buys** (be honest — tie to §0 of the brief): HA, autoscale,
-  zero-downtime, multi-node self-healing. When is it NOT worth it? …
+Production-Grade Infrastructure
+Kubernetes delivers robust operational reliability for production workloads through five core automation capabilities:
+High Availability: Distributed worker nodes eliminate single points of failure.
+Zero-Downtime Deployments: Progressive rolling updates push new code without interrupting users.
+Self-Healing Infrastructure: Automated health checks instantly restart failed components.
+GitOps Automation: Continuous deployment loops sync state automatically via Argo CD.
+Horizontal Scalability: Dedicated controllers scale replica counts dynamically using HPAs.
 
-## How I'd halve this
-> One concrete paragraph: spot/preemptible workers? smaller control-plane? k3s on 2 nodes?
-> shared ingress? …
+How I'd Halve This Cost
+If I wanted to slash these infrastructure costs, my first move would be switching the worker nodes to cheaper Spot Instances while keeping the control plane on a reliable On-Demand instance. For dev environments, we could shrink the control plane's size or just spin up a quick two-node K3s cluster. Since the project relies on nip.io, we already skip out on regular DNS costs. To save even more, we can share one load balancer and keep storage tight—giving us nearly full Kubernetes power for way less money.
